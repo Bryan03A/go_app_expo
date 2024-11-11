@@ -5,6 +5,7 @@ import (
 	"html/template"
 	"math"
 	"net/http"
+	"os"
 	"strconv"
 )
 
@@ -39,7 +40,14 @@ func main() {
 	// Route to display the calculator
 	http.HandleFunc("/", indexHandler)
 
-	// Start the server on port 6005
-	fmt.Println("Server running at http://localhost:6005")
-	http.ListenAndServe(":6005", nil)
+	// Get the PORT environment variable set by Render
+	port := os.Getenv("PORT")
+	if port == "" {
+		port = "6005" // Default to 6005 if PORT is not set
+	}
+
+	// Start the server on the dynamically assigned port
+	fmt.Printf("Server running at http://localhost:%s\n", port)
+	http.ListenAndServe(":"+port, nil)
 }
+
