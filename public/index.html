@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Exponent Calculator</title>
+</head>
+<body>
+  <h1>Exponent Calculator</h1>
+  <form method="POST">
+    <input type="number" name="num1" placeholder="Number 1" required>
+    <input type="number" name="num2" placeholder="Exponent" required>
+    <button type="submit">Calculate</button>
+  </form>
+  {{if .Result}}
+    <h2>Result: {{.Result}}</h2>
+  {{end}}
+</body>
+</html>
